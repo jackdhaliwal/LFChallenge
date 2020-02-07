@@ -1,5 +1,8 @@
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Sorter implements DifferentListSorting {
 	
@@ -18,9 +21,29 @@ public class Sorter implements DifferentListSorting {
 	}
 
 	@Override
-	public void printSortedFrequency(List<Integer> b) {
-		// TODO Auto-generated method stub
+	public void printSortedFrequency(List<Integer> z) {
 		
+		// a map to hold elements (keys) and respective counts (values)
+		// using a TreeMap because we care about the order once we print to output
+		Map<Integer, Integer> mapOfNumsAndValues = new TreeMap<Integer, Integer>();
+
+		for (int num : z) {
+		    if (mapOfNumsAndValues.containsKey(num)) {
+		    	// if element appears more than once in list
+		    	mapOfNumsAndValues.put(num, mapOfNumsAndValues.get(num) + 1);
+		        
+		    } else {
+		    	// if element doesn't appear more than once in list
+		    	mapOfNumsAndValues.put(num, 1);
+		    }
+		}
+		
+		
+		// Using Map.Entry which returns a collection-view of all mappings
+		// (we can iterate over key/values)
+		for (Map.Entry<Integer, Integer> record : mapOfNumsAndValues.entrySet()) {
+		    System.out.println(record.getKey() + " appears " + record.getValue() + " time(s)");
+		}
 	}
 
 	@Override
@@ -42,5 +65,7 @@ public class Sorter implements DifferentListSorting {
 		return b;
 		
 	}
+	
+	
 
 }

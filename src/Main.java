@@ -12,7 +12,7 @@ public class Main {
 		Scanner in = new Scanner(System.in);
 
 		// Array of possible menu choices 
-		String[] arr = {"simpleSort Ascending", "simpleSort Descending"};
+		String[] arr = {"simpleSort Ascending", "simpleSort Descending", "printSortedFrequency"};
 		for( int i = 0; i <= arr.length-1; i++)
 
               System.out.println(i+1 + ": " + arr[i]);
@@ -63,6 +63,23 @@ public class Main {
           		System.out.println("Supplied List: " + someDescendingNums);
           		Sorter sortListDescending = new Sorter();
           		System.out.println("Descending List: " + sortListDescending.simpleSortDescendingHelper(someDescendingNums));
+
+                  break;
+              
+             case "3":
+
+            	 System.out.println("printSortedFrequency: ");
+                 System.out.println(" ");
+
+                List<Integer> someNumsTobePassed = new ArrayList<Integer>();
+                someNumsTobePassed.add(24);
+                someNumsTobePassed.add(12);
+                someNumsTobePassed.add(8);
+                someNumsTobePassed.add(12);
+                someNumsTobePassed.add(19);
+          		System.out.println("Supplied List: " + someNumsTobePassed);
+          		Sorter printFreq = new Sorter();
+          		printFreq.printSortedFrequency(someNumsTobePassed);
 
                   break;
 
