@@ -11,7 +11,7 @@ git clone https://github.com/jackdhaliwal/LFChallenge.git
 
 3. Run the "Main.java" class.
 
-4. You will be presented a menu via console and will be asked to enter your choice (1, 2, 3, 4 or "q" respectively) to execute the required functionality.
+4. You will be presented a menu via console and will be asked to enter your choice (1, 2, 3, 4 or "q"[quit] respectively) to execute the required functionality.
 
 EXAMPLE:
 
