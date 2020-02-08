@@ -1,8 +1,8 @@
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 
 public class Sorter implements DifferentListSorting {
 	
@@ -48,8 +48,19 @@ public class Sorter implements DifferentListSorting {
 
 	@Override
 	public int numberOfUniqueValues(List<Integer> c) {
-		// TODO Auto-generated method stub
-		return 0;
+		Set<Integer> setOfNums = new HashSet<Integer>();
+		int unique=0;
+		for (int num : c) {
+		    if (!setOfNums.contains(num)) {
+		    	setOfNums.add(num);  
+		    }
+		}
+		for (int i : setOfNums) {
+			if (setOfNums.contains(i)) {
+				unique++;
+			}
+		}    
+		return unique;
 	}
 	
 	public List<Integer> simpleSortDescendingHelper(List<Integer> b) {

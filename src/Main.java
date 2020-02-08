@@ -12,7 +12,7 @@ public class Main {
 		Scanner in = new Scanner(System.in);
 
 		// Array of possible menu choices 
-		String[] arr = {"simpleSort Ascending", "simpleSort Descending", "printSortedFrequency"};
+		String[] arr = {"simpleSort Ascending", "simpleSort Descending", "printSortedFrequency", "numberOfUniqueValues"};
 		for( int i = 0; i <= arr.length-1; i++)
 
               System.out.println(i+1 + ": " + arr[i]);
@@ -82,6 +82,24 @@ public class Main {
           		printFreq.printSortedFrequency(someNumsTobePassed);
 
                   break;
+                  
+            case "4":
+
+            	 System.out.println("numberOfUniqueValues: ");
+                 System.out.println(" ");
+
+                List<Integer> someNumOfUniques = new ArrayList<Integer>();
+                someNumOfUniques.add(24);
+                someNumOfUniques.add(12);
+                someNumOfUniques.add(8);
+                someNumOfUniques.add(12);
+                someNumOfUniques.add(19);
+          		System.out.println("Supplied List: " + someNumOfUniques);
+          		Sorter uniqueItems = new Sorter();
+          		System.out.println("Unique values: " + uniqueItems.numberOfUniqueValues(someNumOfUniques));
+
+                  break;
+
 
      
               case "q":
