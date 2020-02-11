@@ -1,143 +1,190 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// Runner for project.
-		
-		
-		// Take user selection.
+
+		// Defining variables
+		boolean quit = false;
+		boolean isAscending = false;
+		String mainMenuSelection;
+		String simpleSortMenuSelection;
+
+		// Setting up scanner to read user input
 		Scanner in = new Scanner(System.in);
 
-		// Possible menu choices.
-		String[] arr = {"simpleSort Ascending", "simpleSort Descending", "printSortedFrequency", "numberOfUniqueValues"};
-		for( int i = 0; i <= arr.length-1; i++) {
-              System.out.println(i+1 + ": " + arr[i]);
+		// Supplied list for testing of implemented methods
+		int[] suppliedNumList = new int[] { 24, 12, 8, 12, 19 };
+
+		System.out.print(" Supplied List: ");
+		// Printing supplied list
+		for (int num = 0; num < suppliedNumList.length; num++) {
+
+			System.out.print(suppliedNumList[num] + " ");
 		}
-		
-        System.out.println("q. Quit Program");
-        System.out.println(" ");
 
-        boolean quit = false;
+		System.out.println(" ");
+		System.out.println(" ");
 
-        String menuItem;
+		do {
 
-        do {
-              System.out.print("Choose menu item: ");
+			System.out.println("MAIN MENU: ");
+			System.out.println(" ");
 
-              menuItem = in.nextLine();
+			System.out.println("Choose main menu item: ");
 
-              switch (menuItem) {
+			// Array of possible menu choices.
+			String[] arr = { "simpleSort", "printSortedFrequency", "numberOfUniqueValues" };
+			for (int i = 0; i <= arr.length - 1; i++) {
 
-              case "1":
-                    System.out.println("simpleSort Ascending: ");
-                    System.out.println(" ");
-                    
-                    // Create supplied list and add example elements.
-                    List<Integer> ascendingNumList = new ArrayList<Integer>();
-                    ascendingNumList.add(24);
-                    ascendingNumList.add(12);
-                    ascendingNumList.add(8);
-                    ascendingNumList.add(12);
-                    ascendingNumList.add(19);
-                    
-            		System.out.println("Supplied List: " + ascendingNumList);
-            		
-            		// Create instance of Sorter class that implements the interface.
-            		Sorter sortListAscending = new Sorter();
-            		
-            		// Call to simpleSort method.
-            		System.out.println("Ascending List after sorting: " + sortListAscending.simpleSort(ascendingNumList));
-                    break;
-              
-              case "2":
-                  	System.out.println("simpleSort Descending: ");
-                  	System.out.println(" ");
-                
-                  	// Create supplied list and add example elements.
-                  	List<Integer> descendingNumList = new ArrayList<Integer>();
-                  	descendingNumList.add(24);
-                  	descendingNumList.add(12);
-                  	descendingNumList.add(8);
-                  	descendingNumList.add(12);
-                  	descendingNumList.add(19);
-                
-                  	System.out.println("Supplied List: " + descendingNumList);
-          		
-                  	// Create new instance of Sorter class that implements the interface.
-                  	Sorter sortListDescending = new Sorter();
-                  	
-                  	// Call to simpleSort method (descending).
-                  	System.out.println("Descending List after sorting: " + sortListDescending.simpleSortDescendingHelper(descendingNumList));
-                  	break;
-                  	
-                  	// Take a list and print them in ascending order to standard out along with number of times 
-                  	// that the respective number appears.
-             case "3":
+				System.out.println(i + 1 + ": " + arr[i]);
+			}
 
-            	 	System.out.println("printSortedFrequency: ");
-            	 	System.out.println(" ");
-            	 	
-            	 	// Create supplied list and add example elements.
-            	 	List<Integer> sortedListToBePrinted = new ArrayList<Integer>();
-            	 	sortedListToBePrinted.add(24);
-            	 	sortedListToBePrinted.add(12);
-            	 	sortedListToBePrinted.add(8);
-            	 	sortedListToBePrinted.add(12);
-            	 	sortedListToBePrinted.add(19);
-            	 	
-            	 	System.out.println("Supplied List: " + sortedListToBePrinted);
-            	 	
-            	 	// Create instance of Sorter class that implements the interface.
-            	 	Sorter frequencyToStandardOut = new Sorter();
-            	 	frequencyToStandardOut.printSortedFrequency(sortedListToBePrinted);
-            	 	break;
-            	 	
-            	 	// Take a list and return number of times a unique value appears .
-            case "4":
+			System.out.println("q. Quit Program");
 
-            	 	System.out.println("numberOfUniqueValues: ");
-            	 	System.out.println(" ");
-            	 	
-            	 	// Create supplied list and add example elements.
-            	 	List<Integer> listOfUniqueValues = new ArrayList<Integer>();
-            	 	listOfUniqueValues.add(24);
-            	 	listOfUniqueValues.add(12);
-            	 	listOfUniqueValues.add(8);
-            	 	listOfUniqueValues.add(12);
-            	 	listOfUniqueValues.add(19);
-            	 	
-            	 	// Additional test case
-            	 	
-            	 	//listOfUniqueValues.add(24);
-  
-            	 	
-            	 	System.out.println("Supplied List: " + listOfUniqueValues);
-            	 	
-            	 	// Create instance of Sorter class that implements the interface.
-            	 	Sorter uniqueItems = new Sorter();
-            	 	System.out.println("Unique values: " + uniqueItems.numberOfUniqueValues(listOfUniqueValues));
-            	 	break;
-            	 	
-            	 	// Quit Program.
-              case "q":
-            	  	
-                    quit = true;
-                    break;
-                    
-                    // User didn't select a valid menu choice.
-              default:
-                    System.out.println("Invalid choice.");
-              }
-              		// If the user doesn't quit program, keep looping menu.
-        	} while (!quit);
-        			
-        			// When program exits, print a friendly goodbye message.
-        	System.out.println("Thank you, Goodbye!");
+			// Take user input for menu selection
+			mainMenuSelection = in.nextLine();
+
+			switch (mainMenuSelection) {
+
+			// Case for simpleSort
+			case "1":
+
+				// Sub-menu for sorting either ascending or descending order
+				System.out.println("SUB-MENU: ");
+				System.out.println(" ");
+				System.out.println("Choose sub-menu item: ");
+
+				// Array of possible sub-menu choices
+				String[] arr2 = { "simpleSort Ascending", "simpleSort Descending", "Back to Main menu" };
+
+				for (int i = 0; i <= arr2.length - 1; i++) {
+					System.out.println(i + 1 + ": " + arr2[i]);
+				}
+				System.out.println("q. Quit Program");
+
+				// Take user input for sub-menu selection
+				simpleSortMenuSelection = in.nextLine();
+
+				switch (simpleSortMenuSelection) {
+				// Inner switch for sub-menu
+				case "1":
+					System.out.println("You chose simpleSort Ascending:");
+
+					// Create instance of Sorter class that implements the interface.
+					Sorter sortListAsc = new Sorter();
+
+					// Setting this to true will invoke ascending method for the sort
+					isAscending = true;
+
+					// Call to simpleSort method.
+					sortListAsc.simpleSort(suppliedNumList, isAscending);
+
+					// Array to store result of method call
+					int[] ascendingResult = new int[5];
+
+					// Store resulting list in new array
+					ascendingResult = suppliedNumList;
+
+					// Iterate over resulting list and print it
+					System.out.print("After Ascending Sort:");
+
+					for (int resultingNum = 0; resultingNum < ascendingResult.length; resultingNum++)
+
+						System.out.print(ascendingResult[resultingNum] + " ");
+
+					System.out.println(" ");
+					System.out.println(" ");
+
+					break;
+
+				case "2":
+					System.out.println("You chose simpleSort Descending: ");
+
+					// Create instance of Sorter class that implements the interface.
+					Sorter sortListDsc = new Sorter();
+
+					isAscending = false;
+					// Call to simpleSort method.
+					sortListDsc.simpleSortDescendingHelper(suppliedNumList, isAscending);
+
+					// Array to store result of method call
+					int[] descendingResult = new int[5];
+
+					// Store resulting list in new array
+					descendingResult = suppliedNumList;
+
+					// Iterate over resulting list and print it
+					System.out.print("After Descending Sort: ");
+
+					for (int resultingNum = 0; resultingNum < descendingResult.length; resultingNum++)
+						System.out.print(descendingResult[resultingNum] + " ");
+
+					System.out.println(" ");
+					System.out.println(" ");
+
+					break;
+
+				// Get back to the main menu
+				case "3":
+					for (int i = 0; i <= arr.length - 1; i++) {
+						System.out.println(i + 1 + ": " + arr[i]);
+					}
+					break;
+
+				case "q":
+					quit = true;
+
+					break;
+
+				default:
+					System.out.println("Invalid choice");
+				}
+				// Break out of outer switch
+				break;
+
+			// Take a list and print them in ascending order to standard out along with
+			// number of times
+			// that the respective number appears.
+			case "2":
+
+				System.out.println("You Chose printSortedFrequency: ");
+				System.out.println(" ");
+
+				// Create instance of Sorter class that implements the interface.
+				Sorter frequencyToStandardOut = new Sorter();
+				frequencyToStandardOut.printSortedFrequency(suppliedNumList);
+				break;
+
+			// Take a list and return number of times a unique value appears .
+			case "3":
+
+				// **NOTE: For additional Additional test case, add "24" to end of the
+				// suppliedNumList array
+
+				// Create instance of Sorter class that implements the interface.
+				Sorter uniqueItems = new Sorter();
+				System.out.println("Unique values: " + uniqueItems.numberOfUniqueValues(suppliedNumList));
+
+				break;
+
+			// Quit Program.
+			case "q":
+				quit = true;
+
+				break;
+
+			// User didn't select a valid menu choice.
+			default:
+				System.out.println("Invalid choice.");
+			}
+
+			// If the user doesn't quit program, keep looping menu.
+		} while (!quit);
+
+		// When program exits, print a friendly goodbye message.
+		System.out.println("Thank you, Goodbye!");
 	}
 
 }
-
-
